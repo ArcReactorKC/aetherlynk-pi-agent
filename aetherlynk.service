@@ -1,0 +1,16 @@
+[Unit]
+Description=AetherLynk Pi Edge Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/aetherlynk/venv/bin/python /opt/aetherlynk/aetherlynk_agent.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/aetherlynk/agent.log
+StandardError=append:/var/log/aetherlynk/agent.log
+SyslogIdentifier=aetherlynk-agent
+
+[Install]
+WantedBy=multi-user.target
