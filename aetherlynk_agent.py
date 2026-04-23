@@ -294,7 +294,7 @@ def main():
 
     # --- MQTT ---
     mqtt_host = config_data.get("mqtt_host", "mqtt.aetherlynk.com")
-    mqtt_port = int(config_data.get("mqtt_port", 1883))
+    mqtt_port = int(config_data.get("mqtt_port", 8883))
     mqtt_client = build_mqtt_client(device_key, bearer_token, mqtt_host, mqtt_port)
 
     # --- Register poller ---
