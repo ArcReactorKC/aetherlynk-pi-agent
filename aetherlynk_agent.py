@@ -238,6 +238,7 @@ class RegisterPoller:
 def build_mqtt_client(device_key: str, bearer_token: str, host: str, port: int) -> mqtt.Client:
     client = mqtt.Client(client_id=device_key, protocol=mqtt.MQTTv311)
     client.username_pw_set(username=device_key, password=bearer_token)
+    client.tls_set()
     client.on_connect = lambda c, u, f, rc: log.info("MQTT connected (rc=%s)", rc)
     client.on_disconnect = lambda c, u, rc: log.warning("MQTT disconnected (rc=%s)", rc)
     client.connect(host, port, keepalive=60)
